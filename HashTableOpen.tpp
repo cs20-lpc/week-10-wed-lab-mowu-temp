@@ -1,6 +1,11 @@
 template <typename Key, typename Val>
 HashTableOpen<Key, Val>::HashTableOpen(int i) {
-    // TODO
+    M = i;
+    ht = new LinkedList<Record>*[i];
+    for (int j = 0; j < i; j++) {
+        ht[j] = new LinkedList<Record>();
+    }
+    this->dictSize = 0;
 }
 
 template <typename Key, typename Val>
@@ -21,7 +26,7 @@ HashTableOpen<Key, Val>& HashTableOpen<Key, Val>::operator=
 
 template <typename Key, typename Val>
 HashTableOpen<Key, Val>::~HashTableOpen() {
-    // TODO
+    
 }
 
 template <typename Key, typename Val>
@@ -29,6 +34,7 @@ void HashTableOpen<Key, Val>::clear() {
     for (int i = 0; i < M; i++) {
         ht[i]->clear();
     }
+    this->dictSize = 0;
 }
 
 template <typename Key, typename Val>
@@ -95,11 +101,20 @@ void HashTableOpen<Key, Val>::copy(const HashTableOpen<Key, Val>& copyObj) {
             }
         }
     }
+    this->dictSize = copyObj.dictSize;
 }
 
 template <typename Key, typename Val>
 Val HashTableOpen<Key, Val>::find(const Key& k) const {
-    // TODO
+    int slot = hash(k);
+    LinkedList<Record>* list = ht[slot];
+    auto end = list->end();
+    for (auto itr = list->begin(); itr != end; itr++) {
+        if ((*itr).k == k) {
+            return (*itr).v;
+        }
+    }
+    throw string ("Error, key not found");
 }
 
 template <typename Key, typename Val>
@@ -152,15 +167,40 @@ int HashTableOpen<Key, Val>::hash(const Key& k) const {
 
 template <typename Key, typename Val>
 void HashTableOpen<Key, Val>::insert(const Key& k, const Val& v) {
-    // TODO
+    int slot = hash(k);
+    LinkedList<Record>* list = ht[slot];
+    Record record = Record(k,v);
+
+    if (list->isEmpty()) {
+        list->append(record);
+    } else {
+        list->insert(0, record);
+
+    }
+    this->dictSize++;
 }
 
 template <typename Key, typename Val>
 void HashTableOpen<Key, Val>::remove(const Key& k) {
-    // TODO
+    int slot = hash(k);
+    LinkedList<Record>* list = ht[slot];
+    auto iend = list->end();
+    int index = 0;
+    for (auto it = list->begin(); it != iend; it++) {
+        if ((*it).k == k) {
+            break;
+        }
+        index++;
+    }
+    if (index >= list->getLength()) {
+        throw string("key not found");
+    }
+    list->remove(index);
+    this->dictSize--;
+
 }
 
 template <typename Key, typename Val>
 int HashTableOpen<Key, Val>::size() const {
-    // TODO
+    return this->dictSize;
 }

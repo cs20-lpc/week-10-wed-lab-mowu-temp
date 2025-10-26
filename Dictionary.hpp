@@ -3,6 +3,8 @@
 
 template <typename Key, typename Val>
 class Dictionary {
+    protected:
+        int dictSize;
     public:
         // default constructor
         Dictionary() { }

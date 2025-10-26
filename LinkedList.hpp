@@ -63,6 +63,48 @@ class LinkedList : public List<T> {
         // the value given (argument 2)
         virtual void replace(int, const T&) override;
 
+        // custom iterator 
+        struct LLIterator {
+            friend class LinkedList;
+
+            using iterator_category = std::forward_iterator_tag;
+            using difference_type   = std::ptrdiff_t;
+            using value_type        = T;
+            using pointer           = T*; 
+            using reference         = T&;  
+
+            LLIterator (Node* ptr): nodePtr(ptr) {};
+
+            reference operator*() const {
+                return nodePtr->value;
+            }
+            pointer operator->() const {
+                return &(nodePtr->value);
+            }
+            LLIterator& operator++() {
+                nodePtr = nodePtr->next;
+                return *this;
+            }
+            LLIterator operator++(int) {
+                LLIterator i = *this;
+                ++(*this);
+                return i;
+            }
+
+            friend bool operator==(const LLIterator& a, const LLIterator& b) {
+                return a.nodePtr == b.nodePtr;
+            }
+            friend bool operator!=(const LLIterator& a, const LLIterator& b) {
+                return a.nodePtr != b.nodePtr;
+            }
+            private:
+                Node* nodePtr;
+        };
+
+        virtual LLIterator begin();
+
+        virtual LLIterator end();
+
         // overloaded stream insertion operator to make printing easier
         template <typename U>
         friend ostream& operator<<(ostream&, const LinkedList<U>&);

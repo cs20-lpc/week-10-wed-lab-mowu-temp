@@ -172,6 +172,16 @@ void LinkedList<T>::replace(int position, const T& elem) {
 }
 
 template <typename T>
+typename LinkedList<T>::LLIterator LinkedList<T>::begin() {
+    return LLIterator(head);
+}
+
+template <typename T>
+typename LinkedList<T>::LLIterator LinkedList<T>::end() {
+    return LLIterator(nullptr);
+}
+
+template <typename T>
 ostream& operator<<(ostream& outStream, const LinkedList<T>& myObj) {
     if (myObj.isEmpty()) {
         outStream << "List is empty, no elements to display.\n";
