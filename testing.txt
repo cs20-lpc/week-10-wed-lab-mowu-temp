@@ -1,0 +1,55 @@
+0
+dummy	hashes to slot 41
+Error, key not found
+dummy	hashes to slot 41
+key not found
+banana	hashes to slot 84
+cactus	hashes to slot 8
+dog	hashes to slot 24
+graph	hashes to slot 75
+haskell	hashes to slot 25
+igloo	hashes to slot 48
+phoenix	hashes to slot 58
+quack	hashes to slot 48
+8
+banana	hashes to slot 84
+a fruit that many like, or a phone
+dog	hashes to slot 24
+a domesticated fluff ball
+quack	hashes to slot 48
+said Mr. Duck
+haskell	hashes to slot 25
+fantastic programming language, go learn it
+dummy	hashes to slot 41
+Error, key not found
+dummy2	hashes to slot 41
+Error, key not found
+dummy	hashes to slot 41
+key not found
+new_item	hashes to slot 51
+9
+new_item	hashes to slot 51
+new_description
+9
+igloo	hashes to slot 48
+a cool house
+new_item	hashes to slot 51
+new_description
+dummy	hashes to slot 41
+Error, key not found
+0
+dummy	hashes to slot 41
+Error, key not found
+dummy	hashes to slot 41
+key not found
+9
+igloo	hashes to slot 48
+a cool house
+new_item	hashes to slot 51
+new_description
+igloo	hashes to slot 48
+8
+dummy	hashes to slot 41
+Error, key not found
+dummy	hashes to slot 41
+key not found
